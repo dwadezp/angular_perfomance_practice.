@@ -7,7 +7,7 @@
    <main></main>
    <article></article>
 </body>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.5/angular.js"></script>
+<script type="text/javascript" src="angular.js"></script>
 <script type="text/javascript">
   function MainFunctionController($http, $timeout, $scope) {
     var ctrl = this;
@@ -34,9 +34,8 @@
     });
 
     setTimeout(function() {
-      $scope.$apply(function() {
-        ctrl.article.text = 'Changed Article Scope';
-      });
+      ctrl.article.text = 'Changed Article Scope';
+      $scope.$apply();
     });
 
    }

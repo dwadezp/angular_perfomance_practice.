@@ -21,7 +21,7 @@
     function createArray() {
       var arr = [],
           i = 0;
-      for(i; i<1000; i++) {
+      for(i; i<100; i++) {
         arr.push({
           id: i,
           name: 'name' + i,
@@ -33,7 +33,7 @@
     function updateArray() {
       var arr = [],
           i = 0;
-      for(i; i<1000; i++) {
+      for(i; i<100; i++) {
         arr.push({
           id: i,
           name: 'name' + i,
@@ -41,9 +41,9 @@
         });
       }
       arr.push({
-         id: 1000,
-         name: 'name1000',
-         value: 'some value1000'
+         id: 101,
+         name: 'name101',
+         value: 'some value101'
       });
 
       return arr;
@@ -58,7 +58,7 @@
         <table border=1>
           <th>Name</th><th>Value</th>
           <tr ng-repeat="item in $ctrl.trArray">
-            <td>{{::item.name}}</td><td>{{item.value}}</td>
+            <td>{{item.name}}</td><td>{{item.value}}</td>
           </tr>
         </table>
       `,

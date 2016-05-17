@@ -17040,6 +17040,7 @@ function $RootScopeProvider() {
           current = target;
 
           while (asyncQueue.length) {
+            debugger;
             try {
               asyncTask = asyncQueue.shift();
               asyncTask.scope.$eval(asyncTask.expression, asyncTask.locals);
@@ -17051,6 +17052,7 @@ function $RootScopeProvider() {
 
           traverseScopesLoop:
           do { // "traverse the scopes" loop
+          debugger;
             if ((watchers = current.$$watchers)) {
               // process our watches
               length = watchers.length;
@@ -26857,7 +26859,8 @@ var NgModelController = ['$scope', '$exceptionHandler', '$attrs', '$element', '$
    * When used with standard inputs, the view value will always be a string (which is in some cases
    * parsed into another type, such as a `Date` object for `input[date]`.)
    * However, custom controls might also pass objects to this method. In this case, we should make
-   * a copy of the object before passing it to `$setViewValue`. This is because `ngModel` does not
+   * a copy of the ob
+   * ject before passing it to `$setViewValue`. This is because `ngModel` does not
    * perform a deep watch of objects, it only looks for a change of identity. If you only change
    * the property of the object then ngModel will not realize that the object has changed and
    * will not invoke the `$parsers` and `$validators` pipelines. For this reason, you should
