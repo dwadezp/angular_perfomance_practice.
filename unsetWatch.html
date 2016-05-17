@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head>
+  <title></title>
+</head>
+<body>
+   <main></main>
+</body>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.5/angular.js"></script>
+<script type="text/javascript">
+  function MainFunctionController($timeout, $scope) {
+    var ctrl = this;
+
+    $scope.$watch('$ctrl.someText', function(newValue) {
+      if (newValue) {
+        console.log('Ive Reacted On someText');
+      }
+    });
+     
+    $timeout(function(){
+      ctrl.someText = 'Im ready';
+    });
+
+  }
+
+  angular.module('app', [])
+    .component('main', {
+      template: `
+        <div>
+          <input type="text" ng-model="$ctrl.someText">
+        </div>
+      `,
+      controller: MainFunctionController
+    });
+</script>
+</html>
