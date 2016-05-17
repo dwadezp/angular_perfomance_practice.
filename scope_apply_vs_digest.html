@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head>
+  <title></title>
+</head>
+<body>
+   <main></main>
+   <article></article>
+</body>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.5/angular.js"></script>
+<script type="text/javascript">
+  function MainFunctionController($http, $timeout, $scope) {
+    var ctrl = this;
+    ctrl.settings = {
+      rule: 'block fb'
+    };
+
+    $scope.$watch('$ctrl.settings.rule', function(old, nw) {
+      console.log('main');
+    });
+    setTimeout(function() {
+      ctrl.settings.rule = 2;
+    });
+
+  }
+  function ArticleController($http, $timeout, $scope) {
+    var ctrl = this;
+    ctrl.article = {
+      text: 'some text'
+    };
+
+    $scope.$watch('$ctrl.article.text', function(old, nw) {
+      console.log('article');
+    });
+
+    setTimeout(function() {
+      $scope.$apply(function() {
+        ctrl.article.text = 'Changed Article Scope';
+      });
+    });
+
+   }
+
+  angular.module('app', [])
+    .component('main', {
+      template: `
+        <div>
+          <span ng-bind="$ctrl.settings.rule"></span>
+        </div>
+      `,
+      controller: MainFunctionController
+    })
+    .component('article', {
+      template: `
+        <div>
+          <span ng-bind="$ctrl.article.text"></span>
+        </div>
+      `,
+      controller: ArticleController
+    });
+</script>
+</html>
